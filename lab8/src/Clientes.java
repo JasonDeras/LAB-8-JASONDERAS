@@ -8,16 +8,18 @@ public class Clientes implements Serializable {
     private String cuenta;
     private String contraseña;
     private String identidad;
-    private String saldo;
+    private int saldo;
     private String usuario;
     private static final long serialVersionUID = 79L;
+    private ArrayList<Productos> compra = new ArrayList();
 
-    public Clientes(String nombre, String cuenta, String contraseña, String identidad, String saldo) {
+    public Clientes(String nombre, String cuenta, String contraseña, String identidad, int saldo, String usuario) {
         this.nombre = nombre;
         this.cuenta = cuenta;
         this.contraseña = contraseña;
         this.identidad = identidad;
         this.saldo = saldo;
+        this.usuario = usuario;
     }
 
     public String getNombre() {
@@ -52,11 +54,11 @@ public class Clientes implements Serializable {
         this.identidad = identidad;
     }
 
-    public String getSaldo() {
+    public int getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(String saldo) {
+    public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
 
@@ -66,6 +68,19 @@ public class Clientes implements Serializable {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public ArrayList<Productos> getCompra() {
+        return compra;
+    }
+
+    public void setCompra(ArrayList<Productos> compra) {
+        this.compra = compra;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 
 }

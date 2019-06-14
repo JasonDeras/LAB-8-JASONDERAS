@@ -1,15 +1,16 @@
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Productos implements Serializable {
 
     private String nombre;
     private int cantidad;
     private int precio;
-    private String caducidad;
+    private Date caducidad;
     private static final long serialVersionUID = 77L;
 
-    public Productos(String nombre, int cantidad, int precio, String caducidad) {
+    public Productos(String nombre, int cantidad, int precio, Date caducidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -40,12 +41,17 @@ public class Productos implements Serializable {
         this.precio = precio;
     }
 
-    public String getCaducidad() {
+    public Date getCaducidad() {
         return caducidad;
     }
 
-    public void setCaducidad(String caducidad) {
+    public void setCaducidad(Date caducidad) {
         this.caducidad = caducidad;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 
 }
