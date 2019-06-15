@@ -1,4 +1,7 @@
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -7,11 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Principal extends javax.swing.JFrame {
-    
+
     public Principal() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,6 +85,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jl_Compras = new javax.swing.JList<>();
         jLabel21 = new javax.swing.JLabel();
+        bt_Eliminar_Lista = new javax.swing.JButton();
         bt_Login = new javax.swing.JButton();
         bt_Logout = new javax.swing.JButton();
         jmb_Opciones = new javax.swing.JMenuBar();
@@ -564,6 +568,13 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel21.setText("Lista del Cliente");
 
+        bt_Eliminar_Lista.setText("Eliminar de La lista");
+        bt_Eliminar_Lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_Eliminar_ListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_CompraLayout = new javax.swing.GroupLayout(jd_Compra.getContentPane());
         jd_Compra.getContentPane().setLayout(jd_CompraLayout);
         jd_CompraLayout.setHorizontalGroup(
@@ -576,7 +587,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(126, 126, 126)
                 .addGroup(jd_CompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_Eliminar_Lista))
                 .addContainerGap(310, Short.MAX_VALUE))
             .addGroup(jd_CompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jd_CompraLayout.createSequentialGroup()
@@ -605,7 +617,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_Eliminar_Lista)))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jd_CompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jd_CompraLayout.createSequentialGroup()
@@ -727,7 +741,7 @@ public class Principal extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(jd_Login, "Contraseña o usuario no correcto");
             }
-            
+
         } else if (rb_Cliente.isSelected()) {
             adminClientes ap = new adminClientes("./clientes.cbm");
             ap.cargarArchivo();
@@ -785,7 +799,7 @@ public class Principal extends javax.swing.JFrame {
         tf_Nombre_Producto.setText("");
         tf_Cantidad_Producto.setText("");
         tf_Precio_Producto.setText("");
-        
+
         jdc_Caducidad.setDate(new Date());
     }//GEN-LAST:event_bt_Crear_ProductoActionPerformed
 
@@ -811,7 +825,7 @@ public class Principal extends javax.swing.JFrame {
             Productos temp = (Productos) cb_Productos.getSelectedItem();
             if (temp != null) {
                 tf_Nombre_Pro.setText(temp.getNombre());
-                
+
                 jt_Productos.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
@@ -823,11 +837,11 @@ public class Principal extends javax.swing.JFrame {
                     boolean[] canEdit = new boolean[]{
                         false, false
                     };
-                    
+
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                         return canEdit[columnIndex];
                     }
@@ -877,7 +891,7 @@ public class Principal extends javax.swing.JFrame {
             Clientes temp = (Clientes) cb_Clientes.getSelectedItem();
             if (temp != null) {
                 tf_Nombre_Cliente1.setText(temp.getNombre());
-                
+
                 jt_Clientes.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
@@ -890,16 +904,16 @@ public class Principal extends javax.swing.JFrame {
                     boolean[] canEdit = new boolean[]{
                         false, false
                     };
-                    
+
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                         return canEdit[columnIndex];
                     }
                 });
-                
+
                 Object row[] = {temp.getNombre(), temp.getCuenta(), temp.getContraseña(), temp.getIdentidad(), temp.getSaldo()};
                 DefaultTableModel m = (DefaultTableModel) jt_Clientes.getModel();
                 m.addRow(row);
@@ -964,7 +978,7 @@ public class Principal extends javax.swing.JFrame {
             Productos temp = (Productos) cb_Productos1.getSelectedItem();
             if (temp != null) {
                 tf_Nombre_Pro1.setText(temp.getNombre());
-                
+
                 jt_Productos1.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
@@ -976,11 +990,11 @@ public class Principal extends javax.swing.JFrame {
                     boolean[] canEdit = new boolean[]{
                         false, false
                     };
-                    
+
                     public Class getColumnClass(int columnIndex) {
                         return types[columnIndex];
                     }
-                    
+
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                         return canEdit[columnIndex];
                     }
@@ -1012,10 +1026,15 @@ public class Principal extends javax.swing.JFrame {
     private void bt_ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ComprarActionPerformed
         // TODO add your handling code here:
         int total = 0;
+        int fact = 0;
+        int aux = 0;
         if (jt_Productos1.getSelectedRow() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel) jt_Productos1.getModel();
             DefaultListModel mode = (DefaultListModel) jl_Compras.getModel();
             total += ((Productos) modelo.getValueAt(jt_Productos1.getSelectedRow(), 2)).getPrecio();
+            if (total >= 0) {
+                aux++;
+            }
             mode.addElement(((Productos) modelo.getValueAt(jt_Productos1.getSelectedRow(), 1)).getNombre());
             jl_Compras.setModel(mode);
             if (p.getSaldo() >= total
@@ -1023,13 +1042,49 @@ public class Principal extends javax.swing.JFrame {
                 a.setCantidad(a.getCantidad() - 1);
                 p.getCompra().add(a);
                 p.setSaldo(p.getSaldo() - total);
+                fact = (int) (total * 0.15);
+                //Creado la factura
+                File archivo = null;
+                FileWriter fw = null;
+                BufferedWriter bw = null;
+                try {
+                    archivo = new File("./factura" + p.getNombre() + ".txt");
+                    fw = new FileWriter(archivo, true);
+                    bw = new BufferedWriter(fw);
+                    bw.write("Nombre: " + p.getNombre());
+                    bw.write("\n");
+                    bw.newLine();
+                    bw.write("Identidad: " + p.getIdentidad());
+                    bw.write("\n");
+                    bw.newLine();
+                    bw.write("Productos: " + p.getCompra() + "," + aux + ";");
+                    bw.write("\n");
+                    bw.newLine();
+                    bw.write("Precio total: " + total);
+                    bw.write("\n");
+                    bw.newLine();
+                    bw.write("Sub total: " + fact);
+                    bw.write("\n");
+                    bw.newLine();
+                    bw.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 JOptionPane.showMessageDialog(jd_Compra, "Gracias por su compra");
             } else {
                 JOptionPane.showMessageDialog(jd_Compra, "No cuenta con el saldo necesario para hacer la compra");
             }
-            
+
         }
     }//GEN-LAST:event_bt_ComprarActionPerformed
+
+    private void bt_Eliminar_ListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Eliminar_ListaActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel mode = (DefaultListModel) jl_Compras.getModel();
+        mode.remove(jl_Compras.getSelectedIndex());
+        a.setCantidad(a.getCantidad() + 1);
+        jl_Compras.setModel(mode);
+    }//GEN-LAST:event_bt_Eliminar_ListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1071,6 +1126,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Comprar;
     private javax.swing.JButton bt_Creacion_Cliente;
     private javax.swing.JButton bt_Crear_Producto;
+    private javax.swing.JButton bt_Eliminar_Lista;
     private javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_Login1;
     private javax.swing.JButton bt_Logout;

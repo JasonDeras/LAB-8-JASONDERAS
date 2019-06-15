@@ -691,6 +691,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="247" max="-2" attributes="0"/>
+                      <Component id="bt_Eliminar_Lista" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="310" max="32767" attributes="0"/>
               </Group>
@@ -729,6 +730,8 @@
                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="bt_Eliminar_Lista" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -850,6 +853,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Lista del Cliente"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="bt_Eliminar_Lista">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar de La lista"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_Eliminar_ListaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
